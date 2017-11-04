@@ -11,7 +11,13 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile']
 }));
 
+router.get('/facebook', passport.authenticate('facebook'));
+
 router.get('/google/redirect', passport.authenticate('google'), function(req, res) {
+  res.redirect('/profile');
+});
+
+router.get('/facebook/redirect', passport.authenticate('facebook'), function(req, res) {
   res.redirect('/profile');
 });
 
